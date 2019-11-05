@@ -38,6 +38,7 @@ if ($db->query($sql) == TRUE )
 {
 }
 
+header("Location: login .html");
 /*
 $sql = "INSERT INTO usertable (Username, Password, First Name,Surname,Age)
 VALUES ('$_POST["username"]','$_POST["password"]','$_POST["firstname"]','$_POST["surname"],'$_POST["age"]')";
