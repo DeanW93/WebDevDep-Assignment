@@ -21,3 +21,6 @@ Nintendo	NDS		50GB	 Nds.png
 
 This is just the Advnace search mechanism working with example Adding more information / change images or topic of the search can be
 easily changed. 
+
+
+Also has the mechanic of seatching via search bar by entering Attributes that can be searched by ie Name Brand Size etc etc 
