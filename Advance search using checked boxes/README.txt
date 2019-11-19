@@ -1,0 +1,23 @@
+In order for this to work the user must create a Mysqli database that is either called "project" or
+go into the connection.php and change the connection to the name of your database.
+
+Then you must create a table called "product" with the following rows:
+Brand - varchar2 50length
+Product - varchar2 50length
+Size - varchar2 50length
+Image - varchar2 50length
+
+
+With the following entries ( entries can be anything but use the following in order for it to work with the images supplier)
+
+Brand 		Product 	Size	 Image
+Sony		PS4		500GB	 PS4.png
+Sony		PS4		250GB	 PS4.png
+Microsoft	Xbox1		250GB	 Xbox1.png
+Microsoft	Xbox360		300GB	 Xbox360.png
+Nintendo	Switch		250GB	 Switch.png
+Nintendo	NDS		50GB	 Nds.png
+
+
+This is just the Advnace search mechanism working with example Adding more information / change images or topic of the search can be
+easily changed. 
