@@ -24,3 +24,13 @@ easily changed.
 
 
 Also has the mechanic of seatching via search bar by entering Attributes that can be searched by ie Name Brand Size etc etc 
+
+CREATE TABLE `project`.`product` ( `Brand` VARCHAR(50) NOT NULL , `Product` VARCHAR(50) NOT NULL , `Size` VARCHAR(50) NOT NULL , `Image` VARCHAR(50) NOT NULL ) ENGINE = InnoDB;
+Expand Requery Edit Explain Profiling Bookmark Database : project Queried time : 9:38:4
+
+
+INSERT INTO `product` (`Brand`, `Product`, `Size`, `Image`) VALUES ('Sony', 'PS4', '500GB', '250GB'), ('Sony', 'PS4', '250GB', '250GB');
+INSERT INTO `product` (`Brand`, `Product`, `Size`, `Image`) VALUES ('Microsoft', 'Xbox1', '250GB', 'Xbox1.png'), ('Microsoft', 'Xbox360', '300GB', 'Xbox360.png');
+INSERT INTO `product` (`Brand`, `Product`, `Size`, `Image`) VALUES ('Nintendo', 'Switch', '250GB', 'Switch.png'), ('Nintendo', 'NDS', '50GB', 'Nds.png');
+
+
