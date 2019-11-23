@@ -25,6 +25,49 @@
 </head>
 <body>
 <body>
+<!-- Jumbotron Banner -->
+<div class="row jumbotron bg-light text-dark ml-3 mr-3 mt-3 rounded">
+			<div class="col">
+				<h1>
+					<strong>
+						Game<span class="text-success">Go</span>
+					</strong>
+				</h1>
+				<p>Official Website of Dean Whelan and Maciek Shipshinsky</p>
+			</div>
+			
+		</div>
+
+		<!-- NavBar -->
+		<nav class="navbar navbar-expand-lg navbar-light bg-light ml-3 mr-3 mt-3 rounded">
+  			<a class="navbar-brand" href="#">
+  				<img class="mr-3" src="images/gamepad-icon.jpg" width="30" height="30" alt="Pad"> GameGo
+  			</a>
+  			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+   				<span class="navbar-toggler-icon"></span>
+  			</button>
+
+  			<!-- Drop down menus -->
+	  		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+	   			<ul class="navbar-nav mr-auto">
+
+	    			<li class="nav-item active">
+	        			<a class="nav-link text-success ml-3 mr-3" href="#">Home <span class="sr-only">(current)</span></a>
+	      			</li>
+						   <li class="nav-item active">
+	        			<button onclick="document.getElementById('id01').style.display='block'" style="display: flex; justify-content: center;  ">Login</button>
+	      			</li>
+							</li>
+						   <li class="nav-item active">
+	        			<button onclick="document.getElementById('id02').style.display='block'" style="display: flex; justify-content: center;  ">Create Account</button>
+	      			</li>
+
+	
+
+
+
+	  
+		</nav>
 
 <br><br>
 
@@ -44,7 +87,7 @@ else
 	$result = mysqli_query($db, "SELECT firstname,Surname,Username,Password,Email,Address,Gender,ProfilePic FROM user where username = '$username'");
 	while ( $row = mysqli_fetch_row($result) ) {
 
-    $output .='<div class="container id="resulttts"">
+    $output .='<div class="container" >
     <div class="row">
       <div class="col-sm">
 
@@ -52,14 +95,17 @@ else
 
       </div>
       <div class="col-sm">
-
+      <p> User Information</p>
+      <p> Profile Picture</p>
+    <div >
       <span id="uploaded_image"> <img src="'.$row[7].'" height="150" width="225" class="img-thumbnail" /></span>
-        <p>Name : '.$row[0].'</p>
-        <p>Surname : '.$row[1].'</p>
-        <p>Username : '.$row[2].'</p>
-        <p>Address : '.$row[5].'</p>
-        <p>Gender : '.$row[6].'</p>
-        <p>Pic : '.$row[7].'</p>
+        <p><b>Name :</b> '.$row[0].'</p>
+        <p><b>Surname : </b>'.$row[1].'</p>
+        <p><b>Username :</b> '.$row[2].'</p>
+        <p><b>Address :</b> '.$row[5].'</p>
+        <p><b>Gender :</b> '.$row[6].'</p>
+        <p><b>Pic : </b>'.$row[7].'</p>
+    </div>
 
   
 
@@ -73,6 +119,9 @@ else
    <br />
    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLong">
   Edit
+</button>
+<button type="button" class="btn btn-danger" id="delete" onclick='deleteItem'>
+  Delete Account
 </button>
    </div>
       <div class="col-sm">
@@ -177,20 +226,69 @@ $(document).ready(function(){
  });
 
 
- $("#submit").click(function(e){
+      
+      $(document).on('click', '#submit', function(){  
+           var Name = $('#Name').val();
+           var Surname = $('#Surname').val(); 
+           var Address = $('#Address').val();
+           var Password = $('#Password').val();
+           if(Name == '')  
+           {  
+                alert("Enter First Name");  
+                return false;  
+           }  
+           if(Surname == '')  
+           {  
+                alert("Enter Last Name");  
+                return false;  
+           }  
+           $.ajax({  
+                url:"edit.php",  
+                method:"POST",  
+                data:{Name:Name, Surname:Surname,Address:Address,Password:Password},  
+                dataType:"text",  
+                success:function(result)  
+                {  
+                       
+                     alert("UPdate successfull"); 
+                     
 
 
-  var action = "data"
-
-    alert(action);
-
-        $.ajax({type: "POST",
-                url: "edit.php",
-                data: {action:action, Name: $(Name).val(), Surname: $(Surname).val(), Address: $(Address).val(), Password: $(Password).val()},
-                success:function(result){
-          $("#resulttts").html(result);
-        }});
+                }  
+               
+           }) 
+           location.reload(); 
       });
+
+        
+      $(document).on('click', '#delete', function(){  
+       
+    if (confirm("Are you sure?")) {
+      $.ajax({  
+                url:"delete.php",  
+                method:"POST",    
+                success:function(result)  
+                {    
+                     alert("Profile Deleted"); 
+          
+                     window.location="index.php";
+
+
+                }  
+                
+               
+           }) 
+          
+    }
+    return false;
+
+           
+           
+           
+   
+          
+      });
+
 
 
 
