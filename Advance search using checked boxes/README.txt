@@ -10,13 +10,13 @@ Image - varchar2 50length
 
 With the following entries ( entries can be anything but use the following in order for it to work with the images supplier)
 
-Brand 		Product 	Size	 Image
-Sony		PS4		500GB	 PS4.png
-Sony		PS4		250GB	 PS4.png
-Microsoft	Xbox1		250GB	 Xbox1.png
-Microsoft	Xbox360		300GB	 Xbox360.png
-Nintendo	Switch		250GB	 Switch.png
-Nintendo	NDS		50GB	 Nds.png
+ID	Brand 		Product 	Size	 Image
+1	Sony		PS4		500GB	 PS4.png
+2	Sony		PS4		250GB	 PS4.png
+3	Microsoft	Xbox1		250GB	 Xbox1.png
+4	Microsoft	Xbox360		300GB	 Xbox360.png
+5	Nintendo	Switch		250GB	 Switch.png
+6	Nintendo	NDS		50GB	 Nds.png
 
 
 This is just the Advnace search mechanism working with example Adding more information / change images or topic of the search can be
