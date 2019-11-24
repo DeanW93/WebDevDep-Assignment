@@ -1,4 +1,5 @@
 <?php
+include 'prepare.php';
 require 'connect.php';
 ?>
 <?php

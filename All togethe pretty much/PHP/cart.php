@@ -1,11 +1,16 @@
 <?php
-	session_start();
+    session_start();
+    $username = $_SESSION['username'];
+    if($username == '')
+    {
+      header("Location: index.php");
+    }
+  
 ?>
 
 <?php
 require 'connect.php';
 
-$username = $_SESSION['username'];
 ?>
 
 <!DOCTYPE html>

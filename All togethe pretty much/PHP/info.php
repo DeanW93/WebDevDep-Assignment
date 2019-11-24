@@ -1,5 +1,15 @@
 <?php
-	session_start();
+require 'connect.php';
+?>
+
+<?php
+  session_start();
+  $username = $_SESSION['username'];
+  if($username == '')
+  {
+    header("Location: index.php");
+  }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -22,8 +32,8 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
+  
 </head>
-<body>
 <body>
 <!-- Jumbotron Banner -->
 <div class="row jumbotron bg-light text-dark ml-3 mr-3 mt-3 rounded">
@@ -52,14 +62,17 @@
 	   			<ul class="navbar-nav mr-auto">
 
 	    			<li class="nav-item active">
-	        			<a class="nav-link text-success ml-3 mr-3" href="#">Home <span class="sr-only">(current)</span></a>
+	        			<a class="nav-link text-success ml-3 mr-3"  href="index.php">Home <span class="sr-only">(current)</span></a>
 	      			</li>
-						   <li class="nav-item active">
-	        			<button onclick="document.getElementById('id01').style.display='block'" style="display: flex; justify-content: center;  ">Login</button>
+                      <li class="nav-item active">
+	        			<a class="nav-link text-success ml-3 mr-3" id="acc" >MyAccount <span class="sr-only">(current)</span></a>
 	      			</li>
-							</li>
-						   <li class="nav-item active">
-	        			<button onclick="document.getElementById('id02').style.display='block'" style="display: flex; justify-content: center;  ">Create Account</button>
+                      <li class="nav-item active">
+	        			<a class="nav-link text-success ml-3 mr-3" id="shopp" >Shopping cart <span class="sr-only">(current)</span></a>
+	      			</li>
+
+                      <li class="nav-item active">
+                      <button type="button"  class="btn btn-danger btn-block" style="width:235px;" id="logout"> Log Out </button>
 	      			</li>
 
 	
@@ -73,8 +86,7 @@
 
  <?php
 
- 	$db = mysqli_connect("localhost","root","","Project");
- 	$username = $_SESSION['username'];
+
    $output='';
 
 if (mysqli_connect_errno())
@@ -84,7 +96,7 @@ else
 {
 }
 
-	$result = mysqli_query($db, "SELECT firstname,Surname,Username,Password,Email,Address,Gender,ProfilePic FROM user where username = '$username'");
+	$result = mysqli_query($conn, "SELECT firstname,Surname,Username,Password,Email,Address,Gender,ProfilePic FROM user where username = '$username'");
 	while ( $row = mysqli_fetch_row($result) ) {
 
     $output .='<div class="container" >
@@ -226,7 +238,7 @@ $(document).ready(function(){
  });
 
 
-      
+      -
       $(document).on('click', '#submit', function(){  
            var Name = $('#Name').val();
            var Surname = $('#Surname').val(); 
